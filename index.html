@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explora y Aprende | Tu Biblioteca Digital</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+.encabezado{
+position:relative;
+padding:10px;
+}
+.logo{
+heigth:auto;
+width:150px;
+display:block;
+}
+        :root {
+            --primary: #0984e3;
+            --secondary: #00cec9;
+            --accent: #74b9ff;
+            --dark: #2d3436;
+            --deep-blue: #0a3d62;
+            --light: #f1f2f6;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light);
+            color: var(--dark);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--deep-blue), var(--primary), var(--secondary));
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(9, 132, 227, 0.15);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(9, 132, 227, 0.25);
+        }
+
+        .card-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .tag-ebook { background-color: var(--deep-blue); }
+        .tag-curso { background-color: var(--secondary); color: #003b3b; }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            color: white;
+            padding: 12px 28px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: opacity 0.3s ease;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        footer {
+            background: var(--deep-blue);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 50px;
+        }
+html {
+  scroll-behavior: smooth;
+}
+
+.otros-ebooks-container {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.btn-otros-ebooks {
+  background-color: #1e3a8a;
+  color: white;
+  padding: 14px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+}
+.menu-ebooks {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  margin-top: 0;
+  padding: 0 15px;
+  background: #f3f6ff;
+  border-radius: 12px;
+  transition: max-height 0.5s ease, opacity 0.4s ease, margin-top 0.4s ease;
+}
+
+.menu-ebooks.activo {
+  max-height: 300px; /* suficiente para los ebooks */
+  opacity: 1;
+  margin-top: 15px;
+  padding: 15px;
+}
+
+.menu-ebooks label {
+  display: block;
+  margin: 8px 0;
+}
+.popup{
+display: none; 
+position: fixed;
+top:0;
+left:0;
+width:100%;
+heigth:100%;
+background: rgba(0,0,0,0.6);
+justify-content: center;
+align-items: center;
+z-index: 999;
+}
+
+.popup form{
+background:#fff;
+padding:20px;
+border-radius:12px;
+width:90%;
+max-width:400px;
+}
+    </style>
+</head>
+<body>
+<header class="encabezado">
+<img src="logo.png"
+alt="logo" class="logo">
+</header>
+
+    <header>
+        <h1>EBOOK</h1>
+        <h1>HISTORIAS QUE COBRAN VIDAS</h1>
+        <p>Fomenta la lectura,reflexiona con historias reales </p>
+    </header>
+<!--VENTANA FLOTANTE-->
+<div id="popup" class="popup">
+  <div class="popup-content">
+
+    <h3>Solicito este  ebook</h3>
+
+    <form name="solicitud-ebook" method="POST" data-netlify="true" action="/gracias.html">
+       <input type="hidden" name="form-name" value="solicitud-ebook">
+      <input type="hidden" name="ebook" id="ebook_solicitado">
+      
+      <input type="text" name="nombre" placeholder="Tu nombre" required>
+      <input type="email" name="email" placeholder="Tu email" required>
+
+      <button type="submit" class="btn">ENVIAR</button>
+      <button type="button" class="btn" onclick="cerrarFormulario()">Cerrar</button>
+    </form>
+
+  </div>
+</div>
+
+
+    <div class="container">
+        <div class="grid">
+            <!-- Ebook 1 -->
+            <div class="card">
+                <!-- CAMBIA 'finanzas.png' por el nombre de tu imagen -->
+                <div class="card-img" style="background-image: url('finanzas.png');"></div>
+                <div class="card-content">
+                    <span class="tag tag-ebook">El peso de las nubes invisibles</span>
+                    <h3>Esta puede ser tu historia,creado por MariD</h3>
+                    <p>El estres en adolescentes es real , acompañalo en el proceso</p>
+                    <button  class="btn" type="button"
+                        onclick="mostrarFormulario('Ebook El peso de las nubes invisibles')">
+                       SOLICITAR
+                   </button>
+            </div>
+
+ </div>
+
+            <!-- Curso 1 -->
+            <div class="card">
+                <!-- CAMBIA 'curso-web.jpg' por el nombre de tu imagen -->
+                <div class="card-img" style="background-image: url('curso-web.jpg');"></div>
+                <div class="card-content">
+                    <span class="tag tag-curso">Una historia fantastica, creado por MariD</span>
+                    <h3>Elara y la llave de los susurros</h3>
+                    <p>Un mundo magico para los mas pequeños</p>
+                    <button  class="btn" type="button"
+                        onclick="mostrarFormulario()">
+                       INFORMACION
+                   </button>
+
+                </div>
+            </div>
+
+            <!-- Ebook 2 -->
+            <div class="card">
+                <!-- CAMBIA 'productividad.jpg' por el nombre de tu imagen -->
+                <div class="card-img" style="background-image: url('productividad.jpg');"></div>
+                <div class="card-content">
+                    <span class="tag tag-ebook">El latido del silencio,creado por MariD</span>
+                    <h3>El se sentia solo</h3>
+                    <p>Es bueno a veces alejarse y reflexionar</p>
+                  <button  class="btn" type="button"
+                        onclick="mostrarFormulario()">
+                       INFORMACION
+                   </button>
+ 
+                </div>
+            </div>
+
+        </div>
+    </div>
+<div class="otros-ebooks-container">
+  <a href="#" class="btn-otros-ebooks"
+   onclick="toggleEbooks(event)">
+    Otros ebooks
+  </a>
+<div id="menu-ebooks" class="menu-ebooks">
+
+  <p>Elegí uno o más ebooks 💙</p>
+
+  <label>
+    <input type="checkbox" class="ebook" value="Emociones en adolescentes">
+    Emociones en adolescentes
+  </label>
+
+  <label>
+    <input type="checkbox" class="ebook" value="Autoestima juvenil">
+    Autoestima juvenil
+  </label>
+
+  <label>
+    <input type="checkbox" class="ebook" value="Guía para padres">
+    Guía para padres
+  </label>
+
+  <button class="btn-whatsapp" onclick="enviarWhatsApp()">
+    Solicitar por WhatsApp 💬
+  </button>
+
+</div>
+</div>
+<section id="otros-ebooks">
+  <h2>Otras historias para vos,no te las pierdas❤️⤴️ </h2>
+
+  <!-- acá van más ebooks -->
+</section>
+    <footer>
+        <p>&copy; 2026 Academia  MariD Todos los derechos reservados.</p>
+    </footer>
+<script>
+  function mostrarFormulario(nombreEbook) {
+    document.getElementById("ebook_solicitado").value=nombreEbook;
+console.log("Ebook seleccionado:",nombreEbook);
+ 
+document.getElementById("popup").style.display = "flex";
+  }
+
+  function cerrarFormulario() {
+    document.getElementById("popup").style.display = "none";
+  }
+</script>
+<script>
+function toggleEbooks(event) {
+  event.preventDefault();
+  const menu = document.getElementById("menu-ebooks");
+  menu.classList.toggle("activo");
+}
+</script>
+<script>
+function enviarWhatsApp() {
+  const ebooksSeleccionados = [];
+  const checkboxes = document.querySelectorAll(".ebook:checked");
+
+  if (checkboxes.length === 0) {
+    alert("Por favor seleccioná al menos un ebook 😊");
+    return;
+  }
+
+  checkboxes.forEach((item) => {
+    ebooksSeleccionados.push(item.value);
+  });
+
+  const mensaje = `Hola, quiero solicitar estos ebooks: ${ebooksSeleccionados.join(", ")}`;
+  const telefono = "59897625988"; // 👈 poné tu número real
+  const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+
+  window.open(url, "_blank");
+}
+</script>
+</body>
+</html>
