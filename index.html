@@ -196,18 +196,19 @@ alt="logo" class="logo">
   <div class="popup-content">
 
     <h3>Solicito este  ebook</h3>
+<form onsubmit="enviarWhatsApp(); return false;">
+  
+  <input type="text" id="nombre" placeholder="Tu nombre" required>
+  
+  <input type="email" id="email" placeholder="Tu email" required>
+  
+  <textarea id="mensaje" placeholder="¿Qué ebook te interesa?"></textarea>
+  
+  <button type="submit">Enviar</button>
 
-    <form name="solicitud-ebook" method="POST" data-netlify="true" action="/gracias.html">
-       <input type="hidden" name="form-name" value="solicitud-ebook">
-      <input type="hidden" name="ebook" id="ebook_solicitado">
-      
-      <input type="text" name="nombre" placeholder="Tu nombre" required>
-      <input type="email" name="email" placeholder="Tu email" required>
+</form>
 
-      <button type="submit" class="btn">ENVIAR</button>
-      <button type="button" class="btn" onclick="cerrarFormulario()">Cerrar</button>
-    </form>
-
+    
   </div>
 </div>
 
@@ -223,8 +224,8 @@ alt="logo" class="logo">
                     <h3>Esta puede ser tu historia,creado por MariD</h3>
                     <p>El estres en adolescentes es real , acompañalo en el proceso</p>
                     <button  class="btn" type="button"
-                        onclick="mostrarFormulario('Ebook El peso de las nubes invisibles')">
-                       SOLICITAR
+                        onclick="window.open('https://wa.me/59897625988?text=Hola%20estoy%20interesado%20en%20el%20ebook%20El%20peso%20de%20las%20nubes%20invisibles','_blank')">
+SOLICITAR
                    </button>
             </div>
 
@@ -239,9 +240,10 @@ alt="logo" class="logo">
                     <h3>Elara y la llave de los susurros</h3>
                     <p>Un mundo magico para los mas pequeños</p>
                     <button  class="btn" type="button"
-                        onclick="mostrarFormulario()">
-                       INFORMACION
-                   </button>
+                   onclick="window.open('https://wa.me/59897625988?text=Hola%20estoy%20interesado%20en%20el%20ebook%20Elara%20y%20la%20llave%20de%20los%20susurros%20','_blank')">
+                   SOLICITAR
+
+                    </button>
 
                 </div>
             </div>
@@ -303,18 +305,24 @@ alt="logo" class="logo">
         <p>&copy; 2026 Academia  MariD Todos los derechos reservados.</p>
     </footer>
 <script>
-  function mostrarFormulario(nombreEbook) {
-    document.getElementById("ebook_solicitado").value=nombreEbook;
-console.log("Ebook seleccionado:",nombreEbook);
- 
-document.getElementById("popup").style.display = "flex";
-  }
+function enviarWhatsApp() {
+  var nombre = document.getElementById("nombre").value;
+  var email = document.getElementById("email").value;
+  var mensaje = document.getElementById("mensaje").value;
 
-  function cerrarFormulario() {
-    document.getElementById("popup").style.display = "none";
-  }
+  var telefono = "59897625988"; 
+
+  var texto = "Hola, soy " + nombre + 
+              ". Mi email es: " + email + 
+              ". Estoy interesado/a en: " + mensaje;
+
+  var url = "https://wa.me/" + telefono + "?text=" + encodeURIComponent(texto);
+
+  window.open(url, "_blank");
+}
 </script>
-<script>
+
+ <script>
 function toggleEbooks(event) {
   event.preventDefault();
   const menu = document.getElementById("menu-ebooks");
