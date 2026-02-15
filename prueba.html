@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Prueba popup</title>
+
+<style>
+.popup{
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+.popup form{
+  background: white;
+  padding: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<button type="button" onclick="abrirForm()">INFORMACION</button>
+
+<div id="popupForm" class="popup">
+  <form>
+    <h3>Formulario de prueba</h3>
+    <input type="email" placeholder="email">
+    <button type="button" onclick="cerrarForm()">Cerrar</button>
+  </form>
+</div>
+
+<script>
+function abrirForm(){
+  alert("abrirForm funciona");
+  document.getElementById("popupForm").style.display = "flex";
+}
+function cerrarForm(){
+  document.getElementById("popupForm").style.display = "none";
+}
+</script>
+
+</body>
+</html>

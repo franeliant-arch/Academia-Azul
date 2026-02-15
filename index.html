@@ -158,6 +158,74 @@ html {
   display: block;
   margin: 8px 0;
 }
+.top-banner {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 14px 0;
+  background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
+}
+
+/* Texto deslizante */
+.banner-track {
+  display: inline-block;
+  white-space: nowrap;
+  animation: scrollText 18s linear infinite;
+}
+
+.banner-track span {
+  font-size: 1rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  animation: colorShift 5s linear infinite;
+}
+
+/* Movimiento del texto */
+@keyframes scrollText {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+/* Cambio de colores */
+@keyframes colorShift {
+  0%   { color: #ffffff; }
+  25%  { color: #00e6ff; }
+  50%  { color: #ff4df2; }
+  75%  { color: #ffd700; }
+  100% { color: #ffffff; }
+}
+
+/* Estrellas animadas */
+.stars {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  overflow: hidden;
+}
+
+.stars::before,
+.stars::after {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background-image: radial-gradient(white 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: moveStars 40s linear infinite;
+  opacity: 0.4;
+}
+
+.stars::after {
+  animation-duration: 70s;
+  opacity: 0.2;
+}
+
+/* Movimiento de estrellas */
+@keyframes moveStars {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-200px); }
+}
 .popup{
 display: none; 
 position: fixed;
@@ -181,6 +249,22 @@ max-width:400px;
     </style>
 </head>
 <body>
+<div class="top-banner">
+  
+  <!-- Estrellas -->
+  <div class="stars"></div>
+
+  <!-- Texto en movimiento -->
+  <div class="banner-track">
+    <span>
+      ✨ Descubre historias que transforman • 
+      📚 Leer es viajar sin moverte • 
+      💫 Nuevos ebooks en MariD • 
+      🌟 Cada página puede cambiar tu día •
+    </span>
+  </div>
+
+</div>
 <header class="encabezado">
 <img src="logo.png"
 alt="logo" class="logo">
@@ -189,7 +273,7 @@ alt="logo" class="logo">
     <header>
         <h1>EBOOK</h1>
         <h1>HISTORIAS QUE COBRAN VIDAS</h1>
-        <p>Fomenta la lectura,reflexiona con historias reales </p>
+        <p>Fomenta la lectura,reflexiona con historias reales y mágicas </p>
     </header>
 <!--VENTANA FLOTANTE-->
 <div id="popup" class="popup">
@@ -238,7 +322,7 @@ SOLICITAR
                 <div class="card-content">
                     <span class="tag tag-curso">Una historia fantastica, creado por MariD</span>
                     <h3>Elara y la llave de los susurros</h3>
-                    <p>Un mundo mágico para los mas pequeños</p>
+                    <p>Un mundo magico para los mas pequeños</p>
                     <button  class="btn" type="button"
                    onclick="window.open('https://wa.me/59897625988?text=Hola%20estoy%20interesado%20en%20el%20ebook%20Elara%20y%20la%20llave%20de%20los%20susurros%20','_blank')">
                    SOLICITAR
@@ -257,12 +341,64 @@ SOLICITAR
                     <h3>El se sentia solo</h3>
                     <p>Es bueno a veces alejarse y reflexionar</p>
                   <button  class="btn" type="button"
-                        onclick="window.open('https://wa.me/59897625988?text=Hola%20estoy%20interesado%20en%20el%20ebook%20El%20latido%20del%20silencio%20','_blank')">
-                       SOLICITAR
+                        onclick="window.open('https://wa.me/59897625988?text=Hola%20estoy%20interesado%20en%20el%20ebook%20Elara%20y%20la%20llave%20de%20los%20susurros%20','_blank')">
+                   SOLICITAR
                    </button>
- 
+
                 </div>
             </div>
+           <!-- Curso 1 -->
+            <div class="card">
+                <!-- CAMBIA 'curso-web.jpg' por el nombre de tu imagen -->
+                <div class="card-img" style="background-image: url('Elara y el corazon de lumina.png');"></div>
+                <div class="card-content">
+                    <span class="tag tag-curso">Una historia fantastica, creado por MariD</span>
+                    <h3>Elara y el corazón de Lumina</h3>
+                    <p>Un mundo magico para los mas pequeños</p>
+                    <button  class="btn" type="button"
+                   onclick="window.open('https://wa.me/59897625988?text=Hola%20estoy%20interesado%20en%20el%20ebook%20Elara%20y%20la%20llave%20de%20los%20susurros%20','_blank')">
+                   SOLICITAR
+
+                    </button>
+
+                </div>
+            </div>
+            <!-- Curso 1 -->
+            <div class="card">
+                <!-- CAMBIA 'curso-web.jpg' por el nombre de tu imagen -->
+                <div class="card-img" style="background-image: url('El eco de mi propio paso1.png');"></div>
+                <div class="card-content">
+                    <span class="tag tag-curso">Una historia real,MariD</span>
+                    <h3>El eco de mi propio paso</h3>
+                    <p>Una historia que revela lo que el orgullo,el silencio y el amor,no dicho pueden causar.</p>
+                    <button  class="btn" type="button"
+                   onclick="window.open('https://wa.me/59897625988?text=Hola%20estoy%20interesado%20en%20el%20ebook%20Elara%20y%20la%20llave%20de%20los%20susurros%20','_blank')">
+                   SOLICITAR
+
+                    </button>
+
+                </div>
+            </div>
+
+<!-- Curso 1 -->
+            <div class="card">
+                <!-- CAMBIA 'curso-web.jpg' por el nombre de tu imagen -->
+                <div class="card-img" style="background-image: url('El ritmo de la mañana1.png');"></div>
+                <div class="card-content">
+                    <span class="tag tag-curso">Una historia real,MariD</span>
+                    <h3>El ritmo de la mañana</h3>
+                    <p>Un joven que no encajaba en un mundo acelerado descubre que no estaba solo</p>
+                    <button  class="btn" type="button"
+                   onclick="window.open('https://wa.me/59897625988?text=Hola%20estoy%20interesado%20en%20el%20ebook%20Elara%20y%20la%20llave%20de%20los%20susurros%20','_blank')">
+                   SOLICITAR
+
+                    </button>
+
+                </div>
+            </div>
+
+
+
 
         </div>
     </div>
@@ -276,18 +412,18 @@ SOLICITAR
   <p>Elegí uno o más ebooks 💙</p>
 
   <label>
-    <input type="checkbox" class="ebook" value="El ritmo de la mañana">
-    El rtimo de la mañana
+    <input type="checkbox" class="ebook" value="Emociones en adolescentes">
+    Emociones en adolescentes
   </label>
 
   <label>
-    <input type="checkbox" class="ebook" value="El eco de mis propios pasos">
-   El eco de mis propios pasos
+    <input type="checkbox" class="ebook" value="Autoestima juvenil">
+    Autoestima juvenil
   </label>
 
   <label>
-    <input type="checkbox" class="ebook" value="Elara y el corazón de lumina">
-    Elara y el corazón de Lumina
+    <input type="checkbox" class="ebook" value="Guía para padres">
+    Guía para padres
   </label>
 
   <button class="btn-whatsapp" onclick="enviarWhatsApp()">
@@ -297,7 +433,7 @@ SOLICITAR
 </div>
 </div>
 <section id="otros-ebooks">
-  <h2>Otras historias para ti,no te las pierdas❤️⤴️ </h2>
+  <h2>Otras historias para vos,no te las pierdas❤️⤴️ </h2>
 
   <!-- acá van más ebooks -->
 </section>
@@ -352,6 +488,3 @@ function enviarWhatsApp() {
 </script>
 </body>
 </html>
-
-
-
