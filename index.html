@@ -433,7 +433,7 @@ SOLICITAR
 </div>
 </div>
 <section id="otros-ebooks">
-  <h2>Otras historias para vos,no te las pierdas❤️⤴️ </h2>
+  <h2>Historias para vos,no te las pierdas❤️⤴️ </h2>
 
   <!-- acá van más ebooks -->
 </section>
@@ -471,7 +471,7 @@ function enviarWhatsApp() {
   const checkboxes = document.querySelectorAll(".ebook:checked");
 
   if (checkboxes.length === 0) {
-    alert("Por favor seleccioná al menos un ebook 😊");
+    alert("Por favor seleccioná al menos un PDF 😊");
     return;
   }
 
@@ -479,7 +479,7 @@ function enviarWhatsApp() {
     ebooksSeleccionados.push(item.value);
   });
 
-  const mensaje = `Hola, quiero solicitar estos ebooks: ${ebooksSeleccionados.join(", ")}`;
+  const mensaje = `Hola, quiero solicitar este PDF: ${ebooksSeleccionados.join(", ")}`;
   const telefono = "59897625988"; // 👈 poné tu número real
   const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
 
@@ -507,6 +507,7 @@ function enviarWhatsApp() {
 </body>
 
 </html>
+
 
 
 
