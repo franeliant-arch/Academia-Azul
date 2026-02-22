@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Autoestima Juvenil</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: #fff9f0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 30px 16px;
+  }
+
+  .poster {
+    width: 700px;
+    background: linear-gradient(135deg, #fff9f0 0%, #fef3e8 100%);
+    border-radius: 32px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+    position: relative;
+  }
+
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, #FF6B6B, #FF8E53, #FFC107);
+    padding: 40px 36px 50px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 180px; height: 180px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -50px; left: -20px;
+    width: 220px; height: 220px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+  }
+  .header .emoji-top {
+    font-size: 52px;
+    display: block;
+    margin-bottom: 10px;
+    animation: bounce 2s infinite;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  .header h1 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 48px;
+    color: white;
+    text-shadow: 3px 3px 0 rgba(0,0,0,0.15);
+    line-height: 1.1;
+    position: relative;
+    z-index: 1;
+  }
+  .header p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.95);
+    margin-top: 12px;
+    font-weight: 700;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* WAVE */
+  .wave {
+    background: linear-gradient(135deg, #FF6B6B, #FF8E53, #FFC107);
+    height: 40px;
+    clip-path: ellipse(55% 100% at 50% 0%);
+    margin-top: -2px;
+  }
+
+  /* DEFINITION BOX */
+  .def-box {
+    margin: 28px 28px 0;
+    background: linear-gradient(135deg, #6C63FF, #A78BFA);
+    border-radius: 20px;
+    padding: 22px 26px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    box-shadow: 0 8px 24px rgba(108,99,255,0.3);
+  }
+  .def-box .icon { font-size: 44px; flex-shrink: 0; }
+  .def-box h2 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 20px;
+    color: white;
+    margin-bottom: 6px;
+  }
+  .def-box p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.92);
+    line-height: 1.5;
+    font-weight: 600;
+  }
+
+  /* SECTION TITLE */
+  .section-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 26px;
+    text-align: center;
+    margin: 32px 0 16px;
+    color: #333;
+    position: relative;
+  }
+  .section-title span {
+    background: linear-gradient(90deg, #FF6B6B, #6C63FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* SIGNS GRID */
+  .signs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    padding: 0 28px;
+  }
+  .sign-card {
+    border-radius: 18px;
+    padding: 18px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    transition: transform 0.2s;
+  }
+  .sign-card:hover { transform: translateY(-3px); }
+  .sign-card .icon { font-size: 32px; flex-shrink: 0; }
+  .sign-card h3 { font-size: 13px; font-weight: 800; color: #222; margin-bottom: 3px; }
+  .sign-card p { font-size: 12px; color: #555; line-height: 1.4; font-weight: 600; }
+  .card-1 { background: #FFF0F0; border-left: 4px solid #FF6B6B; }
+  .card-2 { background: #FFF8E1; border-left: 4px solid #FFC107; }
+  .card-3 { background: #F0F8FF; border-left: 4px solid #42A5F5; }
+  .card-4 { background: #F3E5F5; border-left: 4px solid #AB47BC; }
+  .card-5 { background: #E8F5E9; border-left: 4px solid #66BB6A; }
+  .card-6 { background: #FBE9E7; border-left: 4px solid #FF7043; }
+
+  /* TIPS SECTION */
+  .tips-section {
+    margin: 28px 28px 0;
+    background: linear-gradient(135deg, #E8F5E9, #F1F8E9);
+    border-radius: 24px;
+    padding: 24px;
+    border: 2px dashed #81C784;
+  }
+  .tips-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 22px;
+    color: #2E7D32;
+    text-align: center;
+    margin-bottom: 18px;
+  }
+  .tip-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: white;
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+  }
+  .tip-item:last-child { margin-bottom: 0; }
+  .tip-num {
+    min-width: 34px; height: 34px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Fredoka One', cursive;
+    font-size: 18px;
+    color: white;
+    flex-shrink: 0;
+  }
+  .n1 { background: #FF6B6B; }
+  .n2 { background: #FFC107; }
+  .n3 { background: #6C63FF; }
+  .n4 { background: #4CAF50; }
+  .n5 { background: #FF7043; }
+  .n6 { background: #42A5F5; }
+  .n7 { background: #AB47BC; }
+  .tip-item .tip-text h4 { font-size: 14px; font-weight: 800; color: #222; margin-bottom: 4px; }
+  .tip-item .tip-text p { font-size: 13px; color: #555; line-height: 1.45; font-weight: 600; }
+
+  /* AFFIRMATIONS */
+  .affirmations {
+    margin: 24px 28px 0;
+    text-align: center;
+  }
+  .aff-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 22px;
+    color: #6C63FF;
+    margin-bottom: 16px;
+  }
+  .aff-bubbles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+  .bubble {
+    padding: 10px 18px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 800;
+    color: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    animation: pop 0.5s ease backwards;
+  }
+  .b1 { background: linear-gradient(135deg, #FF6B6B, #FF8E53); animation-delay: 0.1s; }
+  .b2 { background: linear-gradient(135deg, #6C63FF, #A78BFA); animation-delay: 0.2s; }
+  .b3 { background: linear-gradient(135deg, #4CAF50, #81C784); animation-delay: 0.3s; }
+  .b4 { background: linear-gradient(135deg, #FF7043, #FFC107); animation-delay: 0.4s; }
+  .b5 { background: linear-gradient(135deg, #42A5F5, #26C6DA); animation-delay: 0.5s; }
+  .b6 { background: linear-gradient(135deg, #AB47BC, #7C4DFF); animation-delay: 0.6s; }
+  @keyframes pop {
+    from { transform: scale(0.6); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+
+  /* FOOTER */
+  .footer {
+    margin: 28px 0 0;
+    background: linear-gradient(135deg, #6C63FF, #A78BFA, #FF6B6B);
+    padding: 28px 36px;
+    text-align: center;
+    border-radius: 0 0 32px 32px;
+  }
+  .footer p {
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.6;
+  }
+  .footer .big { font-family: 'Fredoka One', cursive; font-size: 22px; margin-bottom: 8px; }
+</style>
+</head>
+<body>
+<div class="poster">
+
+  <!-- HEADER -->
+  <div class="header">
+    <span class="emoji-top">🌟</span>
+    <h1>Autoestima Juvenil</h1>
+    <p>Tu valor no depende de la opinión de los demás ✨</p>
+  </div>
+  <div class="wave"></div>
+
+  <!-- DEFINITION -->
+  <div class="def-box">
+    <div class="icon">💡</div>
+    <div>
+      <h2>¿Qué es la autoestima?</h2>
+      <p>Es la valoración que tenemos de nosotros mismos: cómo nos vemos, nos sentimos y nos tratamos. Una autoestima sana nos permite afrontar retos, relacionarnos mejor y ser más felices.</p>
+    </div>
+  </div>
+
+  <!-- SIGNS -->
+  <div class="section-title"><span>Señales de baja autoestima 🔍</span></div>
+  <div class="signs-grid">
+    <div class="sign-card card-1">
+      <div class="icon">😟</div>
+      <div><h3>Autocrítica excesiva</h3><p>Ser muy duro/a contigo mismo/a ante errores.</p></div>
+    </div>
+    <div class="sign-card card-2">
+      <div class="icon">😰</div>
+      <div><h3>Miedo al fracaso</h3><p>Evitar nuevas experiencias por temor a fallar.</p></div>
+    </div>
+    <div class="sign-card card-3">
+      <div class="icon">🙈</div>
+      <div><h3>Buscar aprobación</h3><p>Necesitar que todos te acepten y aprueben.</p></div>
+    </div>
+    <div class="sign-card card-4">
+      <div class="icon">💭</div>
+      <div><h3>Comparación constante</h3><p>Sentirte menos que otros en redes y en la vida.</p></div>
+    </div>
+    <div class="sign-card card-5">
+      <div class="icon">🚫</div>
+      <div><h3>Dificultad para decir "no"</h3><p>Ceder siempre para no decepcionar a nadie.</p></div>
+    </div>
+    <div class="sign-card card-6">
+      <div class="icon">🌧️</div>
+      <div><h3>Habla negativa interna</h3><p>"No soy suficiente", "nadie me quiere".</p></div>
+    </div>
+  </div>
+
+  <!-- TIPS -->
+  <div class="tips-section">
+    <div class="tips-title">🚀 7 Consejos para fortalecer tu autoestima</div>
+
+    <div class="tip-item">
+      <div class="tip-num n1">1</div>
+      <div class="tip-text">
+        <h4>Hazte amigo/a de tus errores</h4>
+        <p>Equivocarse es parte del aprendizaje. Pregúntate: ¿qué aprendí de esto? en vez de castigarte.</p>
+      </div>
+    </div>
+
+    <div class="tip-item">
+      <div class="tip-num n2">2</div>
+      <div class="tip-text">
+        <h4>Celebra tus logros, por pequeños que sean</h4>
+        <p>Lleva un diario de victorias diarias. Terminaste una tarea, ayudaste a alguien, ¡eso cuenta!</p>
+      </div>
+    </div>
+
+    <div class="tip-item">
+      <div class="tip-num n3">3</div>
+      <div class="tip-text">
+        <h4>Rodéate de personas que te sumen</h4>
+        <p>Las amistades sanas te apoyan, no te critican ni te comparan. Elige con quién compartes tu tiempo.</p>
+      </div>
+    </div>
+
+    <div class="tip-item">
+      <div class="tip-num n4">4</div>
+      <div class="tip-text">
+        <h4>Mueve tu cuerpo y descansa bien</h4>
+        <p>El ejercicio libera endorfinas que mejoran tu estado de ánimo. Dormir bien también renueva la energía mental.</p>
+      </div>
+    </div>
+
+    <div class="tip-item">
+      <div class="tip-num n5">5</div>
+      <div class="tip-text">
+        <h4>Gestiona el tiempo en redes sociales</h4>
+        <p>Las redes muestran "la vida perfecta". Recuerda: es solo un filtro, no la realidad completa.</p>
+      </div>
+    </div>
+
+    <div class="tip-item">
+      <div class="tip-num n6">6</div>
+      <div class="tip-text">
+        <h4>Descubre tus talentos</h4>
+        <p>Explora actividades: música, arte, deporte, escritura. Cuando haces lo que amas, brillas más.</p>
+      </div>
+    </div>
+
+    <div class="tip-item">
+      <div class="tip-num n7">7</div>
+      <div class="tip-text">
+        <h4>Pide ayuda cuando lo necesites</h4>
+        <p>Hablar con un adulto de confianza o un profesional no es debilidad. ¡Es valentía y sabiduría!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- AFFIRMATIONS -->
+  <div class="affirmations">
+    <div class="aff-title">💬 Repite estas frases cada día</div>
+    <div class="aff-bubbles">
+      <div class="bubble b1">✨ Soy suficiente</div>
+      <div class="bubble b2">💪 Soy capaz</div>
+      <div class="bubble b3">🌱 Estoy creciendo</div>
+      <div class="bubble b4">❤️ Me merezco respeto</div>
+      <div class="bubble b5">🌟 Tengo valor</div>
+      <div class="bubble b6">🎯 Puedo lograrlo</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p class="big">🌈 Recuerda siempre...</p>
+    <p>No tienes que ser perfecto/a para merecer amor y respeto.<br>Tu historia es única y valiosa. ¡Cuídate y quiérete! 💛</p>
+  </div>
+
+</div>
+</body>
+</html>
